@@ -14,10 +14,10 @@ namespace NerdDinner1._4
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
+                name: "Default", // Route name
+                url: "{controller}/{action}/{id}", // URL w/ params
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            ); // Param defaults
         }
     }
 }

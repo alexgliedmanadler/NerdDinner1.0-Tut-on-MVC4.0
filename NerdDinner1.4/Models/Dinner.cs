@@ -33,8 +33,8 @@ namespace NerdDinner1._4.Models
                 yield return new RuleViolation("Country required", "Country");
             if (String.IsNullOrEmpty(ContactPhone))
                 yield return new RuleViolation("Phone# required", "ContactPhone");
-            // if (PhoneValidator.IsValidNumber(ContactPhone,Country))
-            //     yield return new RuleViolation("Phone# does not match country", "ContactPhone"); 
+            if (PhoneValidator.IsValidNumber(ContactPhone,Country))
+                yield return new RuleViolation("Phone# does not match country", "ContactPhone"); 
 
             yield break;
         }

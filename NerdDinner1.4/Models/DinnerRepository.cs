@@ -33,6 +33,14 @@ namespace NerdDinner1._4.Models
             return db.Dinners;
         }
 
+        public IQueryable<Dinner> FindUpcomingDinners()
+        {
+            return from dinner in db.Dinners
+                   where dinner.EventDate > DateTime.Now
+                   orderby dinner.EventDate
+                   select dinner;
+        }
+
         public Dinner GetDinner(int id)
         {
             return db.Dinners.SingleOrDefault(d => d.DinnerID == id);
