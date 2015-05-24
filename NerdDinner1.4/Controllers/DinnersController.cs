@@ -29,7 +29,7 @@ namespace NerdDinner1._4.Controllers
             if (dinner == null)
                 return View("NotFound");
             else
-                return View("Details", dinner);
+                return View(dinner);
         }
     }
 }
