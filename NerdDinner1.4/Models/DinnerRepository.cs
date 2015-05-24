@@ -5,20 +5,20 @@ using System.Web;
 
 namespace NerdDinner1._4.Models
 {
-    public class DinnerRepository
+    /*interface IDinnerRepository
     {
         // IQueryable methods
-        public IQueryable<Dinner> FindAllDinners();
-        public IQueryable<Dinner> FindUpcomingDinners();
-        public Dinner GetDinner(int id);
+        IQueryable<Dinner> FindAllDinners();
+        IQueryable<Dinner> FindUpcomingDinners();
+        Dinner GetDinner(int id);
 
         // Insert/Delete
-        public void Add(Dinner dinner);
-        public void Delete(Dinner dinner);
+        void Add(Dinner dinner);
+        void Delete(Dinner dinner);
 
         // Persist data into DB
-        public void Save();
-    }
+        void Save();
+    }*/
 
     public class DinnerRepository
     {

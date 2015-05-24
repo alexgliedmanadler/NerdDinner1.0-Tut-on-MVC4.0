@@ -1,0 +1,6 @@
+﻿SET IDENTITY_INSERT [dbo].[Dinners] ON
+INSERT INTO [dbo].[Dinners] ([DinnerID], [Title], [EventDate], [Description], [HostedBy], [ContactPhone], [Address], [Country], [Latitude], [Longitude]) VALUES (1, '.NET Futures', 12/6/2009, 'Come talk about cool stuff...', 'scottgu', '425-984-3648', 'One Microsoft Road', 'USA', 47.64312, -122.130609)
+INSERT INTO [dbo].[Dinners] ([DinnerID], [Title], [EventDate], [Description], [HostedBy], [ContactPhone], [Address], [Country], [Latitude], [Longitude]) VALUES (2, '.NET Futures', 12/6/2009, 'Come talk about cool stuff...', 'phillu', '425-984-3648', 'One Microsoft Road', 'USA', 47.64312, -122.130609)
+INSERT INTO [dbo].[Dinners] ([DinnerID], [Title], [EventDate], [Description], [HostedBy], [ContactPhone], [Address], [Country], [Latitude], [Longitude]) VALUES (3, '.NET Futures', 12/7/2009, 'Come talk about cool stuff...', 'robcon', '425-984-3648', 'One Microsoft Road', 'USA', 47.64312, -122.21201)
+INSERT INTO [dbo].[Dinners] ([DinnerID], [Title], [EventDate], [Description], [HostedBy], [ContactPhone], [Address], [Country], [Latitude], [Longitude]) VALUES (55, 'XBOX Gaming', 12/6/2009, 'Come talk about cool stuff...', 'billg', '425-984-3648', 'One Microsoft Road', 'USA', 47.64312, -122.21201)
+SET IDENTITY_INSERT [dbo].[Dinners] OFF
