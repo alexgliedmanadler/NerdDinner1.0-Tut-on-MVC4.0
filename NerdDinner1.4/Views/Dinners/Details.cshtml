@@ -9,34 +9,20 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <title>Dinner: @Html.DisplayFor(model => model.Title)</title>
 </head>
 <body>
     <div>
         <fieldset>
             <legend>Fields</legend>
 
-            <h4>Dinner</h4>
-            <hr />
+            <h4>@Html.DisplayFor(model => model.Title)</h4>
+
             <dl class="dl-horizontal">
+                
                 <dt>
-                    @Html.DisplayNameFor(model => model.IsValid)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IsValid)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Title)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Title)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.EventDate)
+                    <strong>When:</strong>
+                    <!--Html.DisplayNameFor(model => model.EventDate)-->
                 </dt>
 
                 <dd>
@@ -44,7 +30,13 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Description)
+                    <strong>Where:</strong>
+                    @Html.DisplayFor(model => model.Address),
+                    @Html.DisplayFor(model => model.Country)
+                </dt>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.Description)</strong>
                 </dt>
 
                 <dd>
@@ -52,59 +44,20 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.HostedBy)
+                    <strong>Organizer:</strong>
                 </dt>
 
                 <dd>
                     @Html.DisplayFor(model => model.HostedBy)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ContactPhone)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ContactPhone)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Address)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Address)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Country)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Country)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Latitude)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Latitude);
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Longitude)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Longitude);
+                    (@Html.DisplayFor(model => model.ContactPhone))
                 </dd>
 
             </dl>
         </fieldset>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.DinnerID }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Edit Dinner", "Edit", new { id = Model.DinnerID }) |
+        @Html.ActionLink("Delete Dinner", "Delete", new { id = Model.DinnerID })
     </p>
 </body>
 </html>
