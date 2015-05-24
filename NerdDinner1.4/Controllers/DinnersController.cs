@@ -3,24 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NerdDinner1._4.Models;
 
 namespace NerdDinner1._4.Controllers
 {
     public class DinnersController : Controller
     {
+        // dinnerRepository global
+        DinnerRepository dinnerRepository = new DinnerRepository();
+
         //
         // GET: /Dinners/
 
-        public void Index()
+        public ActionResult Index()
         {
-            Response.Write("<h1>Coming soon: Dinners</h1>");
+            var dinners = dinnerRepository.FindUpcomingDinners().ToList();
+            return View("Index", dinners);
         }
         //
         // GET: /Dinners/Details/2
 
-        public void Details(int id)
+        public ActionResult Details(int id)
         {
-            Response.Write("<h1>Details DinnerID: " + id + "</h1>");
+            Dinner dinner = dinnerRepository.GetDinner(id);
+            if (dinner == null)
+                return View("NotFound");
+            else
+                return View("Details", dinner);
         }
     }
 }
