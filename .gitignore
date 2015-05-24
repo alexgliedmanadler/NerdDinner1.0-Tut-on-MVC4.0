@@ -20,6 +20,9 @@ $RECYCLE.BIN/
 #SQL DB files
 *.mdf
 
+#SQL LOG Files
+*.ldf
+
 # =========================
 # Operating System Files
 # =========================
