@@ -17,8 +17,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-#SQL LOG files
-*.ldf
+#SQL DB files
+*.mdf
 
 # =========================
 # Operating System Files
