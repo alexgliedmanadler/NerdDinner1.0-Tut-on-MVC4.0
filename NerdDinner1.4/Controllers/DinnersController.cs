@@ -52,6 +52,13 @@ namespace NerdDinner1._4.Controllers
         [HttpPost]
         public ActionResult Edit(Dinner dinner)
         {
+
+          //  string[] allowedProperties = new[]{ "Title", "Description", 
+          //      "ContactPhone", "Address", 
+          //      "EventDate", "Latitude", 
+          //      "Longitude"};
+          //  UpdateModel(dinner, allowedProperties);           //  Can pass an allowedProperties to only update certain values
+          //  check for an equivilant with db as opposed to context.
             try
             {
                 if (dinner == null)
@@ -100,6 +107,45 @@ namespace NerdDinner1._4.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // 
+        // GET: /Dinners/Create
+        public ActionResult Create()
+        {
+            Dinner dinner = new Dinner()
+            {
+                EventDate = DateTime.Now.AddDays(14)
+            };
+            return View(dinner);
+        }
+
+        // 
+        // POST: /Dinners/Create
+        [HttpPost] //add [Authorize]
+        public ActionResult Create(Dinner dinner)
+        {
+            if (ModelState.IsValid)
+                try
+                {
+                    dinner.HostedBy = "Unknown User"; //add [Authorize] change to User.Identity.Name
+
+                    /*RSVP rsvp = new RSVP();
+                    rsvp.AttendeeName = User.Identity.Name;
+
+                    dinner.RSVPs = new List<RSVP>();
+                    dinner.RSVPs.Add(rsvp);*/
+
+                    db.Dinners.Add(dinner);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    //ModelState.AddRuleViolations(dinner.GetRuleViolations()); 
+                }
+            return View(dinner);
+        }
+
     
     }
 }
