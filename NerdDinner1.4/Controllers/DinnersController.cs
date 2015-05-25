@@ -59,6 +59,8 @@ namespace NerdDinner1._4.Controllers
             if(ModelState.IsValid) 
             {
                 db.Entry(dinner).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View(dinner);
         }
