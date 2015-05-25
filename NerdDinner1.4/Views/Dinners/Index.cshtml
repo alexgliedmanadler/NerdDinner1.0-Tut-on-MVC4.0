@@ -4,46 +4,17 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-   
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsValid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HostedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Longitude)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DinnerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DinnerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DinnerID })
-        </td>
-    </tr>
+@foreach (var item in Model) { 
+
+    <li>
+            @Html.ActionLink(item.Title, "Details", new { id = item.DinnerID })
+            on <strong>
+                @item.EventDate.ToString("yyyy-MMM-dd")
+            @item.EventDate.ToString("HH:mm tt")
+            </strong> at
+            @(item.Address + " " + item.Country)
+    </li>
 }
 
 </table>
