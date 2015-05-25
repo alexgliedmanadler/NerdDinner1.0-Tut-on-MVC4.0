@@ -52,20 +52,53 @@ namespace NerdDinner1._4.Controllers
         [HttpPost]
         public ActionResult Edit(Dinner dinner)
         {
-            if (dinner == null)
+            try
             {
-                return HttpNotFound();
+                if (dinner == null)
+                {
+                    return HttpNotFound();
+                }
+                /*if(!dinner.IsHostedBy(User.Identity.Name)) {
+                    return View("InvalidOwner");
+                }*/
+                if (ModelState.IsValid)
+                {
+                    db.Entry(dinner).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-            /*if(!dinner.IsHostedBy(User.Identity.Name)) {
-                return View("InvalidOwner");
-            }*/
-            if(ModelState.IsValid) 
+            catch
             {
-                db.Entry(dinner).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                foreach (var issue in dinner.GetRuleViolations())
+                    ModelState.AddModelError(issue.PropertyName, issue.ErrorMessage);         
             }
             return View(dinner);
+        }
+
+        // 
+        // HTTP GET: /Dinners/Delete/1 
+        public ActionResult Delete(int id = 0)
+        {
+            Dinner dinner = db.Dinners.Find(id);
+            if (dinner == null)
+                return HttpNotFound();
+            return View(dinner);
+        }
+
+        //
+        // HTTP POST: /Dinners/Delete/1
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Dinner dinner = db.Dinners.Find(id);
+
+            if (dinner == null)
+                return HttpNotFound();
+
+            db.Dinners.Remove(dinner);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     
     }
