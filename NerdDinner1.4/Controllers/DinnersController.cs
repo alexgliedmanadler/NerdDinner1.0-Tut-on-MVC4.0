@@ -13,7 +13,6 @@ namespace NerdDinner1._4.Controllers
     public class DinnersController : Controller
     {
         // dinnerRepository global
-        DinnerRepository dinnerRepository = new DinnerRepository();
         private NerdDinnerContext db = new NerdDinnerContext(); 
         //
         // GET: /Dinners/
@@ -43,7 +42,7 @@ namespace NerdDinner1._4.Controllers
         // GET: /Dinners/Edit/2
         public ActionResult Edit(int id)
         {
-            Dinner dinner = dinnerRepository.GetDinner(id);
+            Dinner dinner = db.Dinners.Find(id);
             return View(dinner);
         }
 
@@ -53,6 +52,10 @@ namespace NerdDinner1._4.Controllers
         [HttpPost]
         public ActionResult Edit(Dinner dinner)
         {
+            if (dinner == null)
+            {
+                return HttpNotFound();
+            }
             /*if(!dinner.IsHostedBy(User.Identity.Name)) {
                 return View("InvalidOwner");
             }*/

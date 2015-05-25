@@ -38,12 +38,6 @@ namespace NerdDinner1._4.Models
     partial void DeleteRSVP(RSVP instance);
     #endregion
 		
-		public NerdDinnerDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["NerdDinnerConnectionString"].ConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
-		
 		public NerdDinnerDataContext(string connection) : 
 				base(connection, mappingSource)
 		{

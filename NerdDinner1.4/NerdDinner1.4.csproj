@@ -66,6 +66,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Extensions">
@@ -198,9 +199,11 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dinner.cs" />
-    <Compile Include="Models\DinnerRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NerdDinner.cs">
+      <DependentUpon>NerdDinner.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\NerdDinner.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

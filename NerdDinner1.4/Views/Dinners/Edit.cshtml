@@ -1,12 +1,10 @@
 ﻿@model NerdDinner1._4.Models.Dinner
 
 @{
-    ViewBag.Title = "Edit " + Html.DisplayNameFor(Model => Model.Title);
+    ViewBag.Title = "Edit " + Html.DisplayFor(Model => Model.Title);
 }
 
 <h2>Edit Dinner</h2>
-
-@{Html.ValidationSummary("Please correct the errors and try again");}
 
 @using (Html.BeginForm())
 {
