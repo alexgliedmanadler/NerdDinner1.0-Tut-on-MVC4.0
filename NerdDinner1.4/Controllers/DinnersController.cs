@@ -125,10 +125,11 @@ namespace NerdDinner1._4.Controllers
         public ActionResult Create(Dinner dinner)
         {
             if (ModelState.IsValid)
+            {
                 try
                 {
-                    dinner.HostedBy = "Unknown User"; //add [Authorize] change to User.Identity.Name
-
+                    //UpdateModel(dinner);
+                    dinner.HostedBy = "LoggedInUser"; //change to 
                     /*RSVP rsvp = new RSVP();
                     rsvp.AttendeeName = User.Identity.Name;
 
@@ -137,12 +138,13 @@ namespace NerdDinner1._4.Controllers
 
                     db.Dinners.Add(dinner);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", new { id = dinner.DinnerID });
                 }
                 catch
                 {
-                    //ModelState.AddRuleViolations(dinner.GetRuleViolations()); 
+                    //ModelState.AddRuleViolations(dinner.GetRuleViolations());
                 }
+            }
             return View(dinner);
         }
 
