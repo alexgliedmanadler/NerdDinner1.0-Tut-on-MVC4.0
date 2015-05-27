@@ -43,6 +43,8 @@ namespace NerdDinner1._4.Controllers
         public ActionResult Edit(int id)
         {
             Dinner dinner = db.Dinners.Find(id);
+
+            ViewData["Countries"] = new SelectList(PhoneValidator.Countries, dinner.Country);
             return View(dinner);
         }
 
@@ -78,7 +80,8 @@ namespace NerdDinner1._4.Controllers
             catch
             {
                 foreach (var issue in dinner.GetRuleViolations())
-                    ModelState.AddModelError(issue.PropertyName, issue.ErrorMessage);         
+                    ModelState.AddModelError(issue.PropertyName, issue.ErrorMessage);
+                ViewData["countries"] = new SelectList(PhoneValidator.Countries, dinner.Country);
             }
             return View(dinner);
         }
@@ -128,6 +131,7 @@ namespace NerdDinner1._4.Controllers
             {
                 try
                 {
+                    db.Entry(dinner).State = EntityState.Modified;
                     //UpdateModel(dinner);
                     dinner.HostedBy = "LoggedInUser"; //change to 
                     /*RSVP rsvp = new RSVP();
@@ -148,6 +152,5 @@ namespace NerdDinner1._4.Controllers
             return View(dinner);
         }
 
-    
     }
 }
