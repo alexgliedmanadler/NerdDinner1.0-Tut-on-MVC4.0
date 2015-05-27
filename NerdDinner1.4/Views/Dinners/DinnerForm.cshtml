@@ -59,6 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                <!--ERROR HERE, fix the viewdata thingy again!-->
                @Html.DropDownListFor(model => model.Country, ViewData["Countries"] as SelectList)
                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
             </div>
