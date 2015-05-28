@@ -11,6 +11,23 @@ using System.Text.RegularExpressions;
 
 namespace NerdDinner1._4.Models
 {
+
+    public class DinnerRepository
+    {
+
+        private NerdDinnerContext db = new NerdDinnerContext();
+
+        // 
+        // Query Methods 
+
+        public IQueryable<Dinner> FindUpcomingDinners()
+        {
+            return from dinner in db.Dinners
+                   where dinner.EventDate > DateTime.Now
+                   orderby dinner.EventDate
+                   select dinner;
+        }
+    }
     [Bind(Include="Title,Description,EventDate,Address,Country,ContactPhone,Latitude,Longitude")] 
     public partial class Dinner 
     { 

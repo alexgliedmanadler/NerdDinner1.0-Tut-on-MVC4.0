@@ -12,12 +12,11 @@ namespace NerdDinner1._4.Controllers
 {
     public class DinnersController : Controller
     {
-        // dinnerRepository global
         private NerdDinnerContext db = new NerdDinnerContext(); 
         //
         // GET: /Dinners/
 
-        private const int pageSize = 25;
+        private const int pageSize = 2;
         public ActionResult Index(int? page)
         {
             int pageIndex = page ?? 1;
@@ -25,6 +24,18 @@ namespace NerdDinner1._4.Controllers
             var dinners = db.Dinners.OrderBy(d => d.EventDate);
             return View(dinners.ToPagedList(pageIndex, pageSize));
         }
+
+        //
+        // GET: /Dinners/
+        //      /Dinners?page=2
+       /* public ActionResult Index(int? page)
+        {
+            const int pageSize = 10;
+            //var dinners = dinnerRepository.FindUpcomingDinners().ToList();
+            var dinners = db.Dinners.OrderBy(d => d.EventDate);
+            var paginatedDinners = dinners.Skip((page ?? 0) * pageSize).Take(pageSize).ToList();
+            return View(paginatedDinners);
+        }*/
         //
         // GET: /Dinners/Details/2
 
