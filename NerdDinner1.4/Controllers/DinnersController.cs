@@ -118,7 +118,7 @@ namespace NerdDinner1._4.Controllers
             {
                 EventDate = DateTime.Now.AddDays(14)
             };
-            return View(dinner);
+            return View(new DinnerFormViewModel(dinner));
         }
 
         // 
@@ -148,7 +148,7 @@ namespace NerdDinner1._4.Controllers
                     //ModelState.AddRuleViolations(dinner.GetRuleViolations());
                 }
             }
-            return View(dinner);
+            return View(new DinnerFormViewModel(dinner));
         }
 
     }
