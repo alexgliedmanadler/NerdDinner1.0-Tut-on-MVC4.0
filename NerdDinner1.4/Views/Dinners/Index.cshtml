@@ -3,6 +3,11 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
+
+
+
 <table class="table">
 
 @foreach (var item in Model) { 
@@ -16,5 +21,17 @@
             @(item.Address + " " + item.Country)
     </li>
 }
-
+    
 </table>
+@{
+    
+        if (Model.HasPreviousPage)
+        {
+            @Html.RouteLink("<<<", "UpcomingDinners", new { page = (Model.PageNumber - 1) }) ;
+        }
+        }&nbsp;@{
+            if (Model.HasNextPage)
+            {
+            @Html.RouteLink(">>>", "UpcomingDinners", new { page = (Model.PageNumber + 1) });
+        }
+}
