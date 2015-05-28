@@ -44,8 +44,7 @@ namespace NerdDinner1._4.Controllers
         {
             Dinner dinner = db.Dinners.Find(id);
 
-            ViewData["Countries"] = new SelectList(PhoneValidator.Countries, dinner.Country);
-            return View(dinner);
+            return View(new DinnerFormViewModel(dinner));
         }
 
         //
@@ -83,7 +82,7 @@ namespace NerdDinner1._4.Controllers
                     ModelState.AddModelError(issue.PropertyName, issue.ErrorMessage);
                 ViewData["countries"] = new SelectList(PhoneValidator.Countries, dinner.Country);
             }
-            return View(dinner);
+            return View(new DinnerFormViewModel(dinner));
         }
 
         // 
